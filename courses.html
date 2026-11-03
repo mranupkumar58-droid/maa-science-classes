@@ -104,6 +104,77 @@
             box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
         }
 
+        /* Hamburger button - hidden on desktop */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+/* Mobile navbar */
+@media (max-width: 768px) {
+    .navbar {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        height: auto;
+        min-height: 65px;
+        padding: 10px 14px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .nav-brand {
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .nav-logo {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .brand-name {
+        font-size: 13px;
+        letter-spacing: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+
+    .nav-links a {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .navbar.menu-open .nav-links {
+        display: flex;
+    }
+}
         
         /* Courses Hero Banner */
         .courses-hero {
@@ -359,7 +430,45 @@
             margin-top: 10px;
         }
 
-        
+        /* Mobile Modal Responsive Fix */
+.modal-overlay {
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: auto;
+}
+
+@media (max-width: 480px) {
+    .modal-box {
+        padding: 22px 18px;
+        border-radius: 15px;
+    }
+
+    .modal-box h2 {
+        font-size: 18px !important;
+    }
+
+    .modal-box p {
+        font-size: 12px !important;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .submit-btn {
+        padding: 13px;
+    }
+}
+
 
         /* Why Choose Us Highlights Bar Styling */
 .highlights-bar {
@@ -407,26 +516,215 @@
     margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-    /* Sare course cards ko ek ke neeche ek (single column) karne ke liye */
-    div[class*="course"], div[class*="grid"] {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+/* ===== COMPLETE MOBILE RESPONSIVE FIX ===== */
+
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        height: auto;
+        min-height: 65px;
+        padding: 10px 14px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0;
     }
 
-    /* Har ek card ki width theek karne ke liye taaki wo side se na kate */
-    div[class*="card"] {
-        width: 90% !important;
-        max-width: 320px !important;
-        margin: 10px auto !important;
+    .nav-brand {
+        flex: 1;
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .nav-logo {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .brand-name {
+        font-size: 13px;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    /* Right Side Navigation Drawer */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        position: fixed;
+        top: 75px;
+        right: -280px;
+        width: 250px;
+        max-width: calc(100vw - 30px);
+        padding: 20px;
+        background: #0f172a;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        transition: right 0.3s ease;
+        z-index: 1001;
+    }
+
+    .navbar.menu-open .nav-links {
+        right: 10px;
+    }
+
+    .nav-links a {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    /* Hero Section */
+    .courses-hero {
+        padding: 45px 15px;
+    }
+
+    .courses-hero h1 {
+        font-size: 25px;
+        line-height: 1.3;
+    }
+
+    .courses-hero p {
+        font-size: 13px;
+    }
+
+    /* Programs Section */
+    .programs-section {
+        padding: 35px 15px;
+    }
+
+    .section-title {
+        font-size: 21px;
+        line-height: 1.4;
+        margin-bottom: 25px;
+    }
+
+    /* Course Grid */
+    .course-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 450px;
+        gap: 18px;
+        margin: 0 auto;
+    }
+
+    /* Course Cards */
+    .course-card {
+        width: 100%;
+        min-width: 0;
+        padding: 20px 16px;
+        border-radius: 15px;
+    }
+
+    .course-card-top {
+        gap: 12px;
+    }
+
+    .course-icon {
+        min-width: 48px;
+        width: 48px;
+        height: 48px;
+        font-size: 23px;
+    }
+
+    .course-info {
+        min-width: 0;
+    }
+
+    .course-info h3 {
+        font-size: 16px;
+        padding-right: 0;
+    }
+
+    .course-info p {
+        font-size: 12px;
+    }
+
+    .card-badge {
+        position: static;
+        display: inline-block;
+        align-self: flex-end;
+        margin-bottom: 12px;
+        font-size: 10px;
+    }
+
+    .course-rating {
+        flex-wrap: wrap;
+    }
+
+    .course-features {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .course-card-bottom {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        font-size: 10px;
+    }
+
+    .btn-details {
+        font-size: 12px;
+    }
+
+    /* Highlights Bar */
+    .highlights-bar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 15px;
+        margin: 0 15px 30px;
+    }
+
+    .highlight-item {
+        gap: 10px;
+        padding: 8px;
     }
 }
 
-/* Footer */
-        footer {
+/* Very Small Mobile Screens */
+@media (max-width: 380px) {
+
+    .courses-hero h1 {
+        font-size: 21px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .course-card {
+        padding: 16px 12px;
+    }
+
+    .course-info h3 {
+        font-size: 14px;
+    }
+
+    .course-card-bottom {
+        align-items: flex-start;
+    }
+}
+
+/* Prevent Horizontal Scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+        
+ footer {
             background: #0f172a;
             color: #94a3b8;
             text-align: center;
@@ -439,27 +737,32 @@
 </head>
 <body>
 
-    <!-- Floating Pill Navbar -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <img src="logo.png" alt="Logo" class="nav-logo">
-            <div class="brand-text">
-                <span class="brand-name">MAA SCIENCE CLASSES</span>
-            </div>
+    <!-- Responsive Floating Navbar -->
+<nav class="navbar">
+    <div class="nav-brand">
+        <img src="logo.png" alt="Logo" class="nav-logo">
+        <div class="brand-text">
+            <span class="brand-name">MAA SCIENCE CLASSES</span>
         </div>
-        <!--3 line for phone-->
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="courses.html" class="active">Courses</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
+    </div>
+
+    <button class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
 
     <!-- Courses Hero Banner -->
     <section class="courses-hero">
@@ -630,10 +933,6 @@
             </div>
         </div>
     </div>
-
-    <div class="course-grid">
-        <!-- Aapke saare course cards yahan rahenge -->
-    </div>
 </section>
 
  <!-- Footer -->
@@ -644,50 +943,83 @@
     <!--======================js code=====================-->
 
     <script>
-       // Modal open karne ke liye
+   // Navbar
+const menuToggle = document.getElementById("menuToggle");
+const navbar = document.querySelector(".navbar");
+
+menuToggle.addEventListener("click", function () {
+    const isOpen = navbar.classList.toggle("menu-open");
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+});
+
+// Close menu after clicking a link
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+    link.addEventListener("click", function() {
+        navbar.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+    });
+});
+
+// Open enquiry modal
 function openModal(courseName) {
-    document.getElementById('enquiryModal').style.display = 'flex';
-    if(courseName) {
-        document.getElementById('selectedCourse').value = courseName;
-    }
+    const modal = document.getElementById("enquiryModal");
+    modal.style.display = "flex";
+    document.getElementById("selectedCourse").value = courseName;
+    document.body.style.overflow = "hidden";
 }
 
-// Modal close karne ke liye
+// Close enquiry modal
 function closeModal() {
-    document.getElementById('enquiryModal').style.display = 'none';
+    document.getElementById("enquiryModal").style.display = "none";
+    document.body.style.overflow = "";
 }
 
-// Formspree ke zariye background mein data bhejne ke liye (Bina page redirect kiye)
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector("#enquiryModal form");
-    if (form) {
-        form.addEventListener("submit", async function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: {
-                        'Accept': 'json'
-                    }
-                });
-
-                if (response.ok) {
-                    alert('Thank you! Your enquiry has been submitted successfully. We will contact you soon.');
-                    form.reset();
-                    closeModal();
-                } else {
-                    alert('Oops! There was a problem submitting your form.');
-                }
-            } catch (error) {
-                alert('Oops! Network error. Please try again.');
-            }
-        });
+// Close modal when clicking outside
+document.getElementById("enquiryModal").addEventListener("click", function(e) {
+    if (e.target === this) {
+        closeModal();
     }
 });
-    </script>
+
+// Form submission
+document.querySelector("#enquiryModal form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = this;
+    const submitBtn = form.querySelector(".submit-btn");
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            alert("Thank you! Your enquiry has been submitted successfully.");
+            form.reset();
+            closeModal();
+        } else {
+            alert("Submission failed. Please try again.");
+        }
+    } catch (error) {
+        alert("Network error. Please try again.");
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Enquiry";
+    }
+});
+</script>
 
 </body>
 </html>

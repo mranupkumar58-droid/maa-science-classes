@@ -104,6 +104,25 @@
             box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
         }
 
+        /* Hamburger button - hidden on desktop */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+
 
         /* about Hero Banner */
         .about-hero {
@@ -439,6 +458,151 @@
     background: #dc2626;
 }
 
+/* FIXED MOBILE RESPONSIVE NAVBAR */
+@media (max-width: 768px) {
+
+    .navbar {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        min-height: 65px;
+        height: auto;
+        padding: 10px 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .nav-brand {
+        flex: 1;
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .nav-logo {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .brand-name {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+
+        position: fixed;
+        top: 75px;
+        right: -280px;
+
+        width: 250px;
+        max-width: calc(100vw - 30px);
+        padding: 20px;
+
+        background: #0f172a;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+
+        transition: right 0.3s ease;
+        z-index: 1001;
+    }
+
+    .navbar.menu-open .nav-links {
+        right: 10px;
+    }
+
+    .nav-links a {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    /* Stats responsive */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 20px 10px;
+    }
+
+    .stat-card h2 {
+        font-size: 25px;
+    }
+
+    .stat-card p {
+        font-size: 11px;
+    }
+
+    /* Cards responsive */
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+        padding: 45px 15px;
+    }
+
+    .about-hero h1 {
+        font-size: 25px;
+    }
+
+    .about-hero p {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .info-card {
+        padding: 22px;
+    }
+
+    .cta-banner h2 {
+        font-size: 21px;
+    }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 380px) {
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-name {
+        font-size: 12px;
+    }
+
+    .about-hero h1 {
+        font-size: 21px;
+    }
+}
+
+
 /* Footer */
 footer {
     background: #0f172a;
@@ -453,21 +617,32 @@ footer {
 </head>
 <body>
 
-   <!-- Floating Pill Navbar -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <img src="logo.png" alt="Logo" class="nav-logo">
-            <div class="brand-text">
-                <span class="brand-name">MAA SCIENCE CLASSES</span>
-            </div>
+    <!-- Responsive Floating Navbar -->
+<nav class="navbar">
+    <div class="nav-brand">
+        <img src="logo.png" alt="Logo" class="nav-logo">
+        <div class="brand-text">
+            <span class="brand-name">MAA SCIENCE CLASSES</span>
         </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html"class="active">About</a>
-            <a href="courses.html">Courses</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
+    </div>
+
+    <button class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
 
    <!-- About Hero Banner -->
     <section class="about-hero">
@@ -587,6 +762,29 @@ footer {
     <footer>
         <p>&copy; 2026 MAA SCIENCE CLASSES. All Rights Reserved.</p>
     </footer>
+<!--===================js code================-->
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navbar = document.querySelector(".navbar");
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = navbar.classList.toggle("menu-open");
+
+        menuToggle.setAttribute("aria-expanded", isOpen);
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navbar.classList.remove("menu-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+</script>
 
 </body>
 </html>

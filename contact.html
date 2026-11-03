@@ -104,6 +104,25 @@
             box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
         }
 
+        /* Hamburger button - hidden on desktop */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+
        /* Contact Hero Banner */
         .contact-hero {
             margin-top: 67px;
@@ -228,8 +247,49 @@
             background: #dc2626;
         }
 
-        /* Footer */
-        footer {
+    /* ===== FINAL RESPONSIVE CSS ===== */
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.navbar {
+    width: calc(100% - 8px);
+}
+
+/* Contact cards */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.contact-info,
+.contact-form {
+    min-width: 0;
+    width: 100%;
+}
+
+/* Google Map */
+.map-container {
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    margin: 25px auto;
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+}
+
+/* Footer */
+ footer {
             background: #0f172a;
             color: #94a3b8;
             text-align: center;
@@ -238,26 +298,174 @@
             margin-top: 50px;
         }
 
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+    .navbar {
+        width: calc(100% - 20px);
+        height: 65px;
+        min-height: 65px;
+        padding: 10px 14px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .nav-brand {
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .nav-logo {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .brand-name {
+        font-size: 13px;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    /* Right-side mobile menu */
+    .nav-links {
+        display: flex;
+        position: fixed;
+        top: 75px;
+        right: -280px;
+
+        width: 250px;
+        max-width: calc(100vw - 30px);
+        padding: 20px;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+
+        background: #0f172a;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+
+        transition: right 0.3s ease;
+        z-index: 1001;
+    }
+
+    .navbar.menu-open .nav-links {
+        right: 10px;
+    }
+
+    .nav-links a {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    /* Contact hero */
+    .contact-hero {
+        margin-top: 67px;
+        padding: 45px 15px;
+    }
+
+    .contact-hero h1 {
+        font-size: 28px;
+    }
+
+    .contact-hero p {
+        font-size: 14px;
+    }
+
+    /* Contact cards one by one */
+    .container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        padding: 0 15px;
+        margin: 25px auto;
+        gap: 20px;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 22px 18px;
+        border-radius: 13px;
+    }
+
+    .contact-info h3,
+    .contact-form h3 {
+        font-size: 19px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+    }
+
+    /* Map */
+    .map-container {
+        width: calc(100% - 30px);
+        margin: 20px auto;
+    }
+
+    .map-container iframe {
+        height: 230px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 18px 10px;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 380px) {
+    .brand-name {
+        font-size: 11px;
+    }
+
+    .contact-hero h1 {
+        font-size: 24px;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 18px 14px;
+    }
+}
+
       
     </style>
 </head>
 <body>
 
-    <!-- Floating Pill Navbar -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <img src="logo.png" alt="Logo" class="nav-logo">
-            <div class="brand-text">
-                <span class="brand-name">MAA SCIENCE CLASSES</span>
-            </div>
+    <!-- Responsive Floating Navbar -->
+<nav class="navbar">
+    <div class="nav-brand">
+        <img src="logo.png" alt="Logo" class="nav-logo">
+        <div class="brand-text">
+            <span class="brand-name">MAA SCIENCE CLASSES</span>
         </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="courses.html">Courses</a>
-            <a href="contact.html" class="active">Contact</a>
-        </div>
-    </nav>
+    </div>
+
+    <button class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+</nav>
 
    <!-- Contact Hero Banner -->
     <section class="contact-hero">
@@ -324,14 +532,6 @@
 
 
 <script>
-    function handleFormSubmit(event) {
-        event.preventDefault(); // Page reload waali problem roko
-        alert("Thank you! Your message has been sent successfully. We will contact you soon.");
-        document.getElementById("contactForm").reset(); // Form fields clear karo
-    }
-</script>
-
-<script>
     async function handleSubmit(event) {
         event.preventDefault();
         const form = document.getElementById("contactForm");
@@ -363,6 +563,28 @@
         btn.innerText = "Send Message";
         btn.disabled = false;
     }
+</script>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navbar = document.querySelector(".navbar");
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = navbar.classList.toggle("menu-open");
+
+        menuToggle.setAttribute("aria-expanded", isOpen);
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navbar.classList.remove("menu-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
 </script>
 
 </body>
