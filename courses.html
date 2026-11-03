@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Science Classes - Courses</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+            html {
+      scroll-behavior: smooth;
+    }
+
+        body {
+            background-color: #f4f8fc;
+            color: #333;
+        }
+
+        /* Modern Floating Rounded Pill Navbar */
+        .navbar {
+            position: fixed;
+            top: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1270px;
+            height: 65px;
+            background: rgba(15, 23, 42, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+             box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo {
+            height: 42px;
+            width: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-tagline {
+            color: #ff4d4d;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .nav-links a.active {
+            background: #e63946;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        
+        /* Courses Hero Banner */
+        .courses-hero {
+            margin-top: 67px;
+            background: linear-gradient(135deg, #0d1b2a, #1b263b, #1e3a8a);
+            padding: 60px 20px;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 4px solid #e63946;
+        }
+
+        .courses-hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .courses-hero h1 span {
+            color: #ff4d4d;
+        }
+
+        .courses-hero p {
+            font-size: 15px;
+            color: #cbd5e1;
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            line-height: 1.5;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4d4d, #3b82f6);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Academic Programs Grid Section */
+        .programs-section {
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #173f70;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /* Modern Card Styling */
+        .course-card {
+            background: #ffffff;
+            padding: 26px;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            box-shadow: 0 6px 20px rgba(0, 50, 100, 0.07);
+            border: 1px solid rgba(22, 140, 255, 0.15);
+            transition: all 0.35s ease;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(22, 140, 255, 0.18);
+            border-color: #3b82f6;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #fee2e2;
+            color: #dc2626;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .course-card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 15px;
+        }
+
+        .course-icon {
+            min-width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .course-info h3 {
+            font-size: 19px;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .course-info p {
+            font-size: 13.5px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .course-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .rating-text {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .course-features {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #475569;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 3px solid #167be5;
+        }
+
+        .course-card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 10px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .btn-details {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e63946;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-details:hover {
+            color: #b91c1c;
+            transform: translateX(3px);
+        }
+
+        /* Modal Popup Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #e63946;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        
+
+        /* Why Choose Us Highlights Bar Styling */
+.highlights-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1150px;
+    margin: 0 auto 40px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 50, 100, 0.05);
+    border: 1px solid rgba(22, 140, 255, 0.1);
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    padding: 10px;
+}
+
+.hl-icon {
+    font-size: 28px;
+    background: #eff6ff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.highlight-item h4 {
+    font-size: 14px;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.highlight-item p {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    /* Sare course cards ko ek ke neeche ek (single column) karne ke liye */
+    div[class*="course"], div[class*="grid"] {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Har ek card ki width theek karne ke liye taaki wo side se na kate */
+    div[class*="card"] {
+        width: 90% !important;
+        max-width: 320px !important;
+        margin: 10px auto !important;
+    }
+}
+
+/* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            margin-top: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Floating Pill Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+            <div class="brand-text">
+                <span class="brand-name">MAA SCIENCE CLASSES</span>
+            </div>
+        </div>
+        <!--3 line for phone-->
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html" class="active">Courses</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Courses Hero Banner -->
+    <section class="courses-hero">
+        <h1>OUR <span>COMPREHENSIVE</span> COURSES</h1>
+        <p>Expert coaching programs designed for success in school, board examinations, and strong science foundations.</p>
+        <div class="hero-divider"></div>
+    </section>
+
+    <!-- Explore Academic Programs Section -->
+    <section class="programs-section">
+        <h2 class="section-title">EXPLORE OUR ACADEMIC PROGRAMS</h2>
+        
+        <div class="course-grid">
+            <!-- Class 9 -->
+            <div class="course-card">
+                <div class="card-badge">⚡ Only 5 Seats Left</div>
+                <div class="course-card-top">
+                    <div class="course-icon">📚</div>
+                    <div class="course-info">
+                        <h3>Class 9th Foundation</h3>
+                        <p>Strong fundamental concepts in Physics, Chemistry, Biology, and Mathematics.</p>
+                    </div>
+                </div>
+                <div class="course-rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span class="rating-text">4.9 (120+ Students)</span>
+                </div>
+                <div class="course-features">
+                    <span>✔ NCERT + Reference Books</span>
+                    <span>✔ Weekly Practice Tests</span>
+                    <span>✔ Basic Concept Building</span>
+                </div>
+                <div class="course-card-bottom">
+                    <span class="tag">Duration: 1 Year</span>
+                    <a href="javascript:void(0);" onclick="openModal('Class 9th Foundation')" class="btn-details">Enquire Now →</a>
+                </div>
+            </div>
+
+            <!-- Class 10 -->
+            <div class="course-card">
+                <div class="card-badge">⚡ Filling Fast</div>
+                <div class="course-card-top">
+                    <div class="course-icon">🎯</div>
+                    <div class="course-info">
+                        <h3>Class 10th Board Special</h3>
+                        <p>Complete board exam preparation with regular test series and revision notes.</p>
+                    </div>
+                </div>
+                <div class="course-rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span class="rating-text">4.9 (150+ Students)</span>
+                </div>
+                <div class="course-features">
+                    <span>✔ 10 Years Board Papers Solving</span>
+                    <span>✔ Special Doubt Sessions</span>
+                    <span>✔ Chapter-wise Mock Tests</span>
+                </div>
+                <div class="course-card-bottom">
+                    <span class="tag">Board Focused</span>
+                    <a href="javascript:void(0);" onclick="openModal('Class 10th Board Special')" class="btn-details">Enquire Now →</a>
+                </div>
+            </div>
+
+            <!-- Class 11 -->
+            <div class="course-card">
+                <div class="card-badge">⚡ Limited Seats</div>
+                <div class="course-card-top">
+                    <div class="course-icon">🔬</div>
+                    <div class="course-info">
+                        <h3>Class 11th Science</h3>
+                        <p>In-depth conceptual learning for Physics, Chemistry, Math, and Biology streams.</p>
+                    </div>
+                </div>
+                <div class="course-rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span class="rating-text">4.8 (90+ Students)</span>
+                </div>
+                <div class="course-features">
+                    <span>✔ Advanced Numerical Practice</span>
+                    <span>✔ Strong Base for JEE / NEET</span>
+                    <span>✔ Regular Lab Guidance</span>
+                </div>
+                <div class="course-card-bottom">
+                    <span class="tag">PCM / PCB</span>
+                    <a href="javascript:void(0);" onclick="openModal('Class 11th Science')" class="btn-details">Enquire Now →</a>
+                </div>
+            </div>
+
+            <!-- Class 12 -->
+            <div class="course-card">
+                <div class="card-badge">⚡ Batch Starting Soon</div>
+                <div class="course-card-top">
+                    <div class="course-icon">🎓</div>
+                    <div class="course-info">
+                        <h3>Class 12th Board & Entrance</h3>
+                        <p>Advanced coaching focused on top board scores and competitive readiness.</p>
+                    </div>
+                </div>
+                <div class="course-rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span class="rating-text">5.0 (200+ Students)</span>
+                </div>
+                <div class="course-features">
+                    <span>✔ Complete Syllabus Revision</span>
+                    <span>✔ Sample Paper Practice</span>
+                    <span>✔ Career Guidance & Mentorship</span>
+                </div>
+                <div class="course-card-bottom">
+                    <span class="tag">Target 90%+</span>
+                    <a href="javascript:void(0);" onclick="openModal('Class 12th Board & Entrance')" class="btn-details">Enquire Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enquiry Modal Popup -->
+    <div id="enquiryModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="font-size: 20px; color: #0f172a; margin-bottom: 5px;">Quick Course Enquiry</h2>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Fill out the details below and we will contact you shortly.</p>
+            
+           <form action="https://formspree.io/f/moeepbrp" method="POST">
+    <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="Enter your mobile number" required>
+    </div>
+    <div class="form-group">
+        <label>Selected Course</label>
+        <select id="selectedCourse" name="course">
+            <option>Class 9th Foundation</option>
+            <option>Class 10th Board Special</option>
+            <option>Class 11th Science</option>
+            <option>Class 12th Board & Entrance</option>
+        </select>
+    </div>
+    <button type="submit" class="submit-btn">Submit Enquiry</button>
+</form>
+        </div>
+    </div>
+
+  
+    <!-- Why Choose Us / Key Highlights Bar -->
+    <div class="highlights-bar">
+        <div class="highlight-item">
+            <span class="hl-icon">👨‍🏫</span>
+            <div>
+                <h4>Expert Faculty</h4>
+                <p>Experienced & dedicated teachers</p>
+            </div>
+        </div>
+        <div class="highlight-item">
+            <span class="hl-icon">📝</span>
+            <div>
+                <h4>Regular Tests</h4>
+                <p>Weekly practice & mock exams</p>
+            </div>
+        </div>
+        <div class="highlight-item">
+            <span class="hl-icon">💡</span>
+            <div>
+                <h4>Doubt Sessions</h4>
+                <p>Personal attention to every student</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="course-grid">
+        <!-- Aapke saare course cards yahan rahenge -->
+    </div>
+</section>
+
+ <!-- Footer -->
+    <footer>
+        &copy; 2026 MAA SCIENCE CLASSES. All Rights Reserved.
+    </footer>
+
+    <!--======================js code=====================-->
+
+    <script>
+       // Modal open karne ke liye
+function openModal(courseName) {
+    document.getElementById('enquiryModal').style.display = 'flex';
+    if(courseName) {
+        document.getElementById('selectedCourse').value = courseName;
+    }
+}
+
+// Modal close karne ke liye
+function closeModal() {
+    document.getElementById('enquiryModal').style.display = 'none';
+}
+
+// Formspree ke zariye background mein data bhejne ke liye (Bina page redirect kiye)
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("#enquiryModal form");
+    if (form) {
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'json'
+                    }
+                });
+
+                if (response.ok) {
+                    alert('Thank you! Your enquiry has been submitted successfully. We will contact you soon.');
+                    form.reset();
+                    closeModal();
+                } else {
+                    alert('Oops! There was a problem submitting your form.');
+                }
+            } catch (error) {
+                alert('Oops! Network error. Please try again.');
+            }
+        });
+    }
+});
+    </script>
+
+</body>
+</html>

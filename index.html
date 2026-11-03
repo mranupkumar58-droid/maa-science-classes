@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     html {
@@ -27,124 +27,94 @@
 
    
     
-   /* ================= NAVBAR ================= */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 59px;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-      padding: 12px 30px;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
-      box-sizing: border-box;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    }
+   /* Modern Floating Rounded Pill Navbar */
+        .navbar {
+            position: fixed;
+            top: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1270px;
+            height: 65px;
+            background: rgba(15, 23, 42, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+             box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .nav-logo {
-      height: 45px;
-      width: 45px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+        .nav-logo {
+            height: 42px;
+            width: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
-    .brand-title {
-      font-size: 25px;
-      font-weight: bold;
-      color: #ffffff;
-      white-space: nowrap;
-    }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
+        .brand-name {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
 
-    .nav-links a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+        .brand-tagline {
+            color: #ff4d4d;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
 
-    .nav-links a:hover {
-      color: #38bdf8;
-    }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
 
-    /* 3-Line Toggle Icon - Desktop par hidden rahega */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 21px;
-      cursor: pointer;
-      margin-left: auto;
-    }
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
 
-    .menu-toggle span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: #ffffff;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
 
-    
-    /* ================= MOBILE RESPONSIVE NAVBAR ================= */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex !important;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        margin: 5px;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        align-items: center;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out;
-        gap: 0;
-      }
-
-      .nav-links a {
-        padding: 15px 0;
-        display: block;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .nav-links.active {
-        max-height: 250px;
-      }
-    }
+        .nav-links a.active {
+            background: #e63946;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+        }
 
 
     /* ================= HERO ================= */
 .hero {
   min-height: 450px;
-  margin-top: 60px;
+  margin-top: 67px;
   position: relative;
   overflow: hidden;
 
@@ -430,76 +400,113 @@
       line-height: 1.6;
     }
    
- /* ================= COURSES ================= */
 
-    .courses {
-      background: #eef7ff;
-      padding: 55px 8%;
-      text-align: center;
-    }
+ /* ================= COURSES SECTION FORMATTING ================= */
+.courses {
+  background: linear-gradient(135deg, #f4f8fc 0%, #eef7ff 100%);
+  padding: 70px 8%;
+  text-align: center;
+}
 
-    .course-container {
-      max-width: 1100px;
-      margin: auto;
+.section-label {
+  color: #167be5;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
 
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
+.section-label::before,
+.section-label::after {
+  content: "";
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  background: #75bdff;
+  vertical-align: middle;
+  margin: 0 15px;
+}
 
-    .course-card {
-      background: white;
-      border-radius: 12px;
-      padding: 22px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      text-align: left;
+.section-title {
+  font-size: 32px;
+  color: #173f70;
+  margin-bottom: 40px;
+  font-weight: 800;
+}
 
-      box-shadow: 0 4px 15px rgba(0, 60, 120, 0.08);
+/* 2x2 Grid Layout */
+.course-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
 
-      transition: 0.3s;
-    }
+/* Beautiful Glass/Card Styling */
+.course-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0, 50, 100, 0.08);
+  border: 1px solid rgba(22, 140, 255, 0.1);
+  transition: all 0.35s ease;
+}
 
-    .course-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 60, 120, 0.15);
-    }
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(22, 140, 255, 0.18);
+  border-color: rgba(22, 140, 255, 0.4);
+}
 
-    .course-icon {
-      min-width: 75px;
-      height: 75px;
-      border-radius: 14px;
+/* Stylish Icon Box with Soft Gradient */
+.course-icon {
+  min-width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.6);
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.course-info h3 {
+  font-size: 19px;
+  color: #173b68;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
 
-      font-size: 34px;
-      background: #dff7e8;
-    }
+.course-info p {
+  color: #5c7089;
+  font-size: 14px;
+  line-height: 1.5;
+}
 
-    .course-card:nth-child(2) .course-icon {
-      background: #dceeff;
-    }
+.view-courses-btn {
+    display: inline-block;
+    background-color: #2563eb; /* Aap apni pasand ka color rakh sakte hain */
+    color: #ffffff;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
 
-    .course-card:nth-child(3) .course-icon {
-      background: #f0e3ff;
-    }
-
-    .course-card h3 {
-      font-size: 17px;
-      color: #173b68;
-      margin-bottom: 10px;
-    }
-
-    .course-card p {
-      color: #5c7089;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .contact-content {text-align: center;
-    }
+.view-courses-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
 
     /* ================= FAQ SECTION ================= */
     .faq-section {
@@ -694,12 +701,14 @@
 
     /* ================= FOOTER ================= */
 
-    footer {
-      background: #062d5c;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            margin-top: 50px;
+        }
 
 
 /* ================= FLOATING WHATSAPP BUTTON ================= */
@@ -732,91 +741,7 @@
 
     /* ================= MOBILE ================= */
 
-    @media (max-width: 900px) {
-
-      nav {
-        padding: 0 5%;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .nav-links {
-        gap: 15px;
-      }
-
-      .nav-links a {
-        font-size: 13px;
-      }
-
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .course-container {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 45px;
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      nav {
-        height: auto;
-        padding: 18px;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .nav-links {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .nav-links a {
-        padding: 5px;
-      }
-
-      .hero {
-        min-height: 500px;
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      .small-title {
-        font-size: 16px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .section-title {
-        font-size: 28px;
-      }
-
-      .section-label::before,
-      .section-label::after {
-        width: 25px;
-        margin: 0 8px;
-      }
-    }
-
+   
     
    /* Preloader Full Screen Style */
     #preloader {
@@ -1022,12 +947,7 @@
     gap: 20px;
 }
 
-/* Mobile screen ke liye ise wapas ek ke niche ek kar dein */
-@media (max-width: 768px) {
-    .social-cards {
-        grid-template-columns: 1fr;
-    }
-}
+
 
 .social-card {
     background: rgba(30, 41, 59, 0.85);
@@ -1098,29 +1018,22 @@
         </div>
     </div>
 </div>
- 
-  <!-- ================= NAVBAR ================= -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <img src="logo.png" alt="Logo" class="nav-logo">
-      <span class="brand-title">MAA SCIENCE CLASSES</span>
-    </div>
-
-    <!-- 3-Line Hamburger Icon -->
-    <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="nav-links" id="nav-list">
-      <a href="#home">Home</a>
-      <a href="#courses">Courses</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
+  
+  <!-- Floating Pill Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+            <div class="brand-text">
+                <span class="brand-name">MAA SCIENCE CLASSES</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
 
   <!-- ================= HERO ================= -->
 
@@ -1499,75 +1412,51 @@
   <!-- ================= COURSES ================= -->
 
   <section class="courses" id="courses">
+  <div class="section-label">OUR COURSES</div>
+  <h2 class="section-title">Classes We Offer</h2>
 
-    <div class="section-label">
-      OUR COURSES
+  <div class="course-container">
+    <!-- Class 9 Card -->
+    <div class="course-card">
+      <div class="course-icon">📚</div>
+      <div class="course-info">
+        <h3>Class 9th</h3>
+        <p>Foundation batch for physics, chemistry, biology and mathematics.</p>
+      </div>
     </div>
 
-    <h2 class="section-title">
-      Classes We Offer
-    </h2>
-
-
-    <div class="course-container">
-
-
-      <div class="course-card">
-
-        <div class="course-icon">
-          🧪
-        </div>
-
-        <div>
-          <h3>Class 5 – 8</h3>
-
-          <p>
-            Mathematics, Science, English
-            and other subjects.
-          </p>
-        </div>
-
+    <!-- Class 10 Card -->
+    <div class="course-card">
+      <div class="course-icon">🎯</div>
+      <div class="course-info">
+        <h3>Class 10th</h3>
+        <p>Complete board exam preparation with regular tests and notes.</p>
       </div>
-
-
-      <div class="course-card">
-
-        <div class="course-icon">
-          📖
-        </div>
-
-        <div>
-          <h3>Class 9 – 10</h3>
-
-          <p>
-            Complete preparation for school
-            and board examinations.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="course-card">
-
-        <div class="course-icon">
-          🔬
-        </div>
-
-        <div>
-          <h3>Class 11 – 12</h3>
-
-          <p>
-            Subject-focused classes with
-            regular tests and doubt solving.
-          </p>
-        </div>
-
-      </div>
-
     </div>
 
-  </section>
+    <!-- Class 11 Card -->
+    <div class="course-card">
+      <div class="course-icon">🔬</div>
+      <div class="course-info">
+        <h3>Class 11th</h3>
+        <p>Detailed study of physics, chemistry, mathematics and biology.</p>
+      </div>
+    </div>
+
+    <!-- Class 12 Card -->
+    <div class="course-card">
+      <div class="course-icon">🎓</div>
+      <div class="course-info">
+        <h3>Class 12th</h3>
+        <p>Advanced coaching focusing on board excellence and concepts.</p>
+      </div>
+    </div>
+  </div>
+  <!-- View All Courses Button -->
+<div style="text-align: center; margin-top: 30px;">
+    <a href="courses.html" class="view-courses-btn">View All Courses &rarr;</a>
+</div>
+</section>
 
   <!-- Student Feedback / Testimonials Section -->
 <div class="testimonials-section">
@@ -1706,28 +1595,23 @@
     </p>
 
     <p style="font-size:18px; margin-bottom:25px;">
-      📞 +91 8797589306
+      📞 +91 8797******
     </p>
 
     <a
-      href="https://wa.me/918797589306"
-      target="_blank"
+      href="contact.html"
       class="join-btn">
-      WhatsApp Us →
+     Contact Us →
     </a>
 
   </section>
 
 
   <!-- ================= FOOTER ================= -->
+    <footer>
+        &copy; 2026 MAA SCIENCE CLASSES. All Rights Reserved.
+    </footer>
 
-  <footer>
-
-    © 2026 MAA SCIENCE CLASSES
-    <br>
-    All Rights Reserved.
-
-  </footer>
 
   <!-- ================= FLOATING WHATSAPP ICON ================= -->
   <a href="https://wa.me/918797589306" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
